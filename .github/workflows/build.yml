@@ -4,6 +4,7 @@ on:
   schedule:
     # Menjalankan workflow setiap 4 jam
     - cron: "0 */4 * * *"
+  workflow_dispatch: # Menambahkan trigger untuk menjalankan workflow secara manual
 
 jobs:
   auto-commit:
@@ -27,5 +28,9 @@ jobs:
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           git add README.md
-          git commit -m "Auto commit: $(date)"
-          git push
+          if git diff --cached --exit-code; then
+            echo "No changes detected, skipping commit"
+          else
+            git commit -m "Auto commit: $(date)"
+            git push
+          fi
