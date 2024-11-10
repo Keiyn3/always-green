@@ -25,8 +25,8 @@ jobs:
       # Step 3: Commit dan Push perubahan
       - name: Commit and Push changes
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --global user.name 'keiyn3'
+          git config --global user.email 'charis.imanuel26@gmail.com'
           git add README.md
           if git diff --cached --exit-code; then
             echo "No changes detected, skipping commit"
